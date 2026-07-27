@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture.CoO</title>
+    <link rel="stylesheet" href="inicio.css">
+</head>
+<body>
+
+<header class="topo-site">
+    <nav class="menu-container">
+        <a href="inicio.html" class="logo">zikKa</a>
+
+        <ul class="menu-links">
+            <li><a href="inicio.html">Início</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+
+        <div class="menu-iconos">
+         
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar Tema">
+                <span id="theme-icon">🌙</span>
+                <span id="theme-text">Escuro</span>
+            </button>
+
+       
+            <a href="carrinho.html" class="icon-btn cart-btn">
+                🛒 <span class="cart-badge" id="contador-carrinho">0</span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <h1>Nossos Produtos</h1>
+
+    <div class="carrossel-container">
+        <button class="btn-carrossel btn-prev" onclick="moveCarrossel(-1)">&#10094;</button>
+        <button class="btn-carrossel btn-next" onclick="moveCarrossel(1)">&#10095;</button>
+
+        <div class="carrossel-track" id="carrosselTrack">
+
+            <div class="tenis-card">
+                <img src="imagens/air max 95.webp" alt="Nike Air Max 95">
+                <div class="tenis-info">
+                    <h4>Nike Air Max 95</h4>
+                    <span class="tenis-preco">R$ 1000,90</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Nike Air Max 95', 1000.90, 'imagens/air max 95.webp')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div class="tenis-card">
+                <img src="imagens/air max 97.webp" alt="Nike Air Max 97">
+                <div class="tenis-info">
+                    <h4>Nike Air Max 97</h4>
+                    <span class="tenis-preco">R$ 1300,00</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Nike Air Max 97', 1300.00, 'imagens/air max 97.webp')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div class="tenis-card">
+                <img src="imagens/air max 90.webp" alt="Nike Air Max 90">
+                <div class="tenis-info">
+                    <h4>Nike Air Max 90</h4>
+                    <span class="tenis-preco">R$ 1000,00</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Nike Air Max 90', 1000.00, 'imagens/air max 90.webp')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div class="tenis-card">
+                <img src="imagens/air max dn.webp" alt="Nike Air Max DN">
+                <div class="tenis-info">
+                    <h4>Nike Air Max DN</h4>
+                    <span class="tenis-preco">R$ 1200,00</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Nike Air Max DN', 1200.00, 'imagens/air max dn.webp')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+                
+            </div>
+
+            <div class="tenis-card">
+                <img src="imagens/air max tn.webp" alt="Nike Air Max TN">
+                <div class="tenis-info">
+                    <h4>Nike Air Max TN</h4>      
+                    <span class="tenis-preco">R$ 1300,00</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Nike Air Max TN', 1300.00, 'imagens/air max tn.webp')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div class="tenis-card">
+                <img src="imagens/air force black.webp" alt="Nike Air Force Black">
+                <div class="tenis-info">
+                    <h4>Nike Air Force Black</h4>   
+                    <span class="tenis-preco">R$ 800,00</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Nike Air Force Black', 800.00, 'imagens/air force black.webp')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div class="tenis-card">
+                <img src="imagens/air force white.avif" alt="Nike Air Force White">
+                <div class="tenis-info">
+                    <h4>Nike Air Force White</h4>
+                    <span class="tenis-preco">R$ 800,00</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Nike Air Force White', 800.00, 'imagens/air force white.avif')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div class="tenis-card">
+                <img src="imagens/air force cpfm white.webp" alt="Nike Air Force CPFM White">
+                <div class="tenis-info">
+                    <h4>Nike Air Force CPFM White</h4>
+                    <span class="tenis-preco">R$ 2000,00</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Nike Air Force CPFM White', 2000.00, 'imagens/air force cpfm white.webp')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div class="tenis-card">
+                <img src="imagens/air max cpfm.png" alt="Nike Air Force CPFM Black">
+                <div class="tenis-info">
+                    <h4>Nike Air Force CPFM Black</h4>
+                    <span class="tenis-preco">R$ 2000,00</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Nike Air Force CPFM Black', 2000.00, 'imagens/air max cpfm.png')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div class="tenis-card">
+                <img src="imagens/nike initiator.avif" alt="Nike Initiator">
+                <div class="tenis-info">
+                    <h4>Nike Initiator</h4>
+                    <span class="tenis-preco">R$ 649,99</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Nike Initiator', 649.99, 'imagens/nike initiator.avif')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div class="tenis-card">
+                <img src="imagens/tenis total 90.avif" alt="Tênis Nike Total 90">
+                <div class="tenis-info">
+                    <h4>Tênis Nike Total 90</h4>
+                    <span class="tenis-preco">R$ 549,99</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Tênis Nike Total 90', 549.99, 'imagens/tenis total 90.avif')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div class="tenis-card">
+                <img src="imagens/asics gel 1130.webp" alt="Asics Gel 1130">
+                <div class="tenis-info">
+                    <h4>Asics Gel 1130</h4>
+                    <span class="tenis-preco">R$ 599,99</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Asics Gel 1130', 599.99, 'imagens/asics gel 1130.webp')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+
+            <div class="tenis-card">
+                <img src="imagens/shox 12 molas.avif" alt="Nike Shox TL">
+                <div class="tenis-info">
+                    <h4>Nike Shox TL</h4>
+                    <span class="tenis-preco">R$ 1349,99</span>
+                    <button class="btn-add-carrinho" onclick="adicionarAoCarrinho('Nike Shox TL', 1349.99, 'imagens/shox 12 molas.avif')">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<section class="marcas-links">
+    <h3>Esses são alguns dos produtos que oferecemos.</h3>
+    <h4>Para mais informações sobre os produtos, clique nos links abaixo de cada marca:</h4>
+    <ul>
+        <li><a href="https://www.nike.com" target="_blank">Nike</a></li>
+        <li><a href="https://www.asics.com" target="_blank">Asics</a></li>
+        <li><a href="https://www.newbalance.com" target="_blank">New Balance</a></li>
+    </ul>
+</section>
+
+<section class="sobre-nos-home">
+    <div class="sobre-container">
+        
+       
+        <div class="sobre-imagem">
+    <div class="sobre-imagem">
+    <div class="sobre-imagem">
+    <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?q=80&w=800&auto=format&fit=crop" alt="Tênis Nike Azul">
+</div>
+</div>
+</div>
+        <div class="sobre-conteudo-texto">
+            <span class="subtitulo-sobre">Nossa Cultura</span>
+            <h2>Mais que uma loja,<br>um movimento urbano.</h2>
+            
+            <p>
+                A <strong>Culture.coO</strong> nasceu das ruas, impulsionada pela paixão pela cultura <em>sneakerhead</em> e pelo lifestyle do streetwear original. Nós não apenas vendemos tênis; nós entregamos expressão, identidade e história em forma de arte para os seus pés.
+            </p>
+            
+            <p>
+                Fazemos uma curadoria minuciosa dos drops mais desejados do mundo. Seja a silhueta clássica de um Air Max ou o design tecnológico de um Asics Gel, nosso compromisso é conectar você à autenticidade com a máxima qualidade que o mercado urbano exige.
+            </p>
+
+            <div class="sobre-selos">
+                <div class="selo-item">
+                    <span class="selo-icone">⚡</span>
+                    <p>Drops Exclusivos</p>
+                </div>
+                <div class="selo-item">
+                    <span class="selo-icone">📦</span>
+                    <p>Envio Premium</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="rodape">
+    <div class="footer-conteudo">
+        <h3>ZIKKA</h3>
+        <p>Moda com estilo e qualidade para você.</p>
+        <p>📞 (41) 99841-5148</p>
+        <p>📧 contato@ZIKKA.com.br</p>
+        <p>&copy; 2026 ZIKKA - Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<script src="inicio.js"></script>
+
+</body>
+</html>

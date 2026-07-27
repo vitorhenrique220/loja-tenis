@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "Trabalho.Catalogo",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Trabalho.Catalogo"
+	}
+}

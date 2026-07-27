@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | ZIKKA</title>
+    <link rel="stylesheet" href="contato.css">
+</head>
+<body>
+
+
+<header class="topo-site">
+    <nav class="menu-container">
+        <a href="inicio.html" class="logo">zikKa</a>
+
+        <ul class="menu-links">
+            <li><a href="inicio.html">Início</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+
+        <div class="menu-iconos">
+            <!-- Botão de alternar tema -->
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar Tema">
+                <span id="theme-icon">🌙</span>
+                <span id="theme-text">Escuro</span>
+            </button>
+
+            <!-- Ícone do Carrinho -->
+            <a href="carrinho.html" class="icon-btn cart-btn">
+                🛒 <span class="cart-badge" id="contador-carrinho">0</span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+    <main class="contato-principal">
+        <div class="contato-header">
+            <span>Suporte & Atendimento</span>
+            <h1>Entre em Contato</h1>
+            <p>Tem alguma dúvida sobre seu drop, trocas ou quer apenas trocar uma ideia? Nossa equipe está pronta para ajudar.</p>
+        </div>
+
+        
+
+            <section class="contato-cards-wrapper">
+                
+                <div class="card-suporte-item">
+                    <div class="icone-wrapper">📞</div>
+                    <div class="info-texto">
+                        <h3>Telefone & WhatsApp</h3>
+                        <p>(41) 99841-5148</p>
+                        <span>Resposta em até 2 horas via Whats.</span>
+                    </div>
+                </div>
+
+                <div class="card-suporte-item">
+                    <div class="icone-wrapper">📧</div>
+                    <div class="info-texto">
+                        <h3>E-mail Oficial</h3>
+                        <p>contato@zikka.com.br</p>
+                        <span>Para parcerias e suporte técnico.</span>
+                    </div>
+                </div>
+
+                <div class="card-suporte-item">
+                    <div class="icone-wrapper">⏰</div>
+                    <div class="info-texto">
+                        <h3>Horários</h3>
+                        <p>Segunda a Sexta: 09h às 18h</p>
+                        <p>Sábados: 09h às 13h</p>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>ZIKKA</h3>
+                <p>Moda com estilo, autenticidade e a máxima qualidade do mercado urbano para você.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Atendimento</h4>
+                <p>📞 (41) 99841-5148</p>
+                <p>📧 contato@zikka.com.br</p>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p>Receba avisos de drops exclusivos.</p>
+                <div class="news-input">
+                    <input type="email" placeholder="Seu e-mail">
+                    <button>OK</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ZIKKA - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+<script>
+
+function alternarTema() {
+    const body = document.body;
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+
+  
+    body.classList.toggle('light-theme');
+
+ 
+    const isLight = body.classList.contains('light-theme');
+
+
+    if (themeIcon && themeText) {
+        themeIcon.textContent = isLight ? '☀️' : '🌙';
+        themeText.textContent = isLight ? 'Claro' : 'Escuro';
+    }
+
+    
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        if (themeIcon && themeText) {
+            themeIcon.textContent = '☀️';
+            themeText.textContent = 'Claro';
+        }
+    }
+
+  
+    const btnTheme = document.getElementById('theme-toggle');
+    if (btnTheme) {
+        btnTheme.addEventListener('click', alternarTema);
+    }
+});
+
+function alternarTema() {
+   
+    document.body.classList.toggle('dark-theme');
+
+    const isDark = document.body.classList.contains('dark-theme');
+    
+    
+    const themeText = document.getElementById('theme-text');
+    const themeIcon = document.getElementById('theme-icon');
+    
+    if (themeText && themeIcon) {
+        themeText.textContent = isDark ? 'Escuro' : 'Claro';
+        themeIcon.textContent = isDark ? '🌙' : '☀️';
+    }
+
+   
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-theme');
+        
+        const themeText = document.getElementById('theme-text');
+        const themeIcon = document.getElementById('theme-icon');
+        if (themeText && themeIcon) {
+            themeText.textContent = 'Escuro';
+            themeIcon.textContent = '🌙';
+        }
+    }
+});
+
+function alternarTema() {
+    document.body.classList.toggle('dark-theme');
+    const isDark = document.body.classList.contains('dark-theme');
+    
+    const themeText = document.getElementById('theme-text');
+    const themeIcon = document.getElementById('theme-icon');
+    
+    if (themeText && themeIcon) {
+        themeText.textContent = isDark ? 'Escuro' : 'Claro';
+        themeIcon.textContent = isDark ? '🌙' : '☀️';
+    }
+
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-theme');
+        const themeText = document.getElementById('theme-text');
+        const themeIcon = document.getElementById('theme-icon');
+        if (themeText && themeIcon) {
+            themeText.textContent = 'Escuro';
+            themeIcon.textContent = '🌙';
+        }
+    }
+});
+</script>
+
+
+</body>
+</html>
