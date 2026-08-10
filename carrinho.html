@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho | ZIKKA</title>
+    <title>ZIKKA - Carrinho</title>
+
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%233b82f6;' /><stop offset='100%' style='stop-color:%231d4ed8;' /></linearGradient></defs><rect width='100' height='100' rx='28' fill='%230a0a12'/><path d='M28 28 H72 L38 72 H72' fill='none' stroke='url(%23grad)' stroke-width='14' stroke-linecap='round' stroke-linejoin='round'/></svg>"> 
+    
     <link rel="stylesheet" href="inicio.css">
-   
 </head>
 <body>
 
 <header class="topo-site">
     <nav class="menu-container">
-        <a href="inicio.html" class="logo">zikKa</a>
+        
+        <a href="inicio.html" class="logo">
+            ZIKKA
+        </a>
 
         <ul class="menu-links">
             <li><a href="inicio.html">Início</a></li>
@@ -19,13 +25,11 @@
         </ul>
 
         <div class="menu-iconos">
-            <!-- Botão de alternar tema -->
             <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar Tema">
                 <span id="theme-icon">🌙</span>
                 <span id="theme-text">Escuro</span>
             </button>
 
-            <!-- Ícone do Carrinho -->
             <a href="carrinho.html" class="icon-btn cart-btn">
                 🛒 <span class="cart-badge" id="contador-carrinho">0</span>
             </a>
@@ -33,281 +37,34 @@
     </nav>
 </header>
 
+<main class="carrinho-container">
+    <h1>Seu Carrinho</h1>
 
-    <main class="carrinho-container">
-        <h1>Seu Carrinho</h1>
+    <div class="carrinho-wrapper">
+        <div id="lista-carrinho" class="lista-carrinho"></div>
 
-        <div class="carrinho-wrapper">
-            <div id="lista-carrinho" class="lista-carrinho">
-                </div>
-
-            <div class="resumo-carrinho">
-                <h3>Resumo do Pedido</h3>
-                <div class="resumo-linha">
-                    <span>Subtotal:</span>
-                    <span id="subtotal">R$ 0,00</span>
-                </div>
-                <div class="resumo-linha">
-                    <span>Frete:</span>
-                    <span class="frete-gratis">Grátis</span>
-                </div>
-                <hr>
-                <div class="resumo-linha total">
-                    <span>Total:</span>
-                    <span id="total-pedido">R$ 0,00</span>
-                </div>
-                <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
+        <div class="resumo-carrinho">
+            <h3>Resumo do Pedido</h3>
+            <div class="resumo-linha">
+                <span>Subtotal:</span>
+                <span id="subtotal">R$ 0,00</span>
             </div>
+            <div class="resumo-linha">
+                <span>Frete:</span>
+                <span class="frete-gratis">Grátis</span>
+            </div>
+            <hr>
+            <div class="resumo-linha total">
+                <span>Total:</span>
+                <span id="total-pedido">R$ 0,00</span>
+            </div>
+            <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
         </div>
-    </main>
-
-<script>
- 
-  function mostrarToast(mensagem, tipo = 'sucesso') {
-    let toast = document.getElementById('toast-notification');
-
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.id = 'toast-notification';
-      document.body.appendChild(toast);
-    }
-
-    const icone = tipo === 'aviso' ? '⚠️' : '✓';
-    toast.innerHTML = `<span style="color: #ff3333; font-weight: bold; margin-right: 5px;">${icone}</span> ${mensagem}`;
-    toast.classList.add('show');
-
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 3000);
-  }
-
- 
-  function verificarCarrinhoVazio() {
-    const carrinho = JSON.parse(localStorage.getItem('carrinhoCulture')) || [];
-
-    if (carrinho.length === 0) {
-      mostrarToast('Seu carrinho está vazio!', 'aviso');
-
-      const containerCarrinho = document.getElementById('itens-carrinho');
-      if (containerCarrinho) {
-        containerCarrinho.innerHTML = `
-          <div style="text-align: center; padding: 40px; color: #ccc;">
-            <p style="font-size: 18px;">Você ainda não adicionou nenhum produto.</p>
-            <a href="inicio.html" style="color: #ff3333; font-weight: bold; text-decoration: none;">Ir às compras →</a>
-          </div>
-        `;
-      }
-    }
-  }
+    </div>
+</main>
 
 
-  function converterPrecoParaNumero(preco) {
-    if (typeof preco === 'number') return preco;
-    if (!preco) return 0;
-
-    let limpo = preco.toString().replace('R$', '').replace(/\./g, '').replace(',', '.').trim();
-    return parseFloat(limpo) || 0;
-  }
-
-  function formatarMoeda(valor) {
-    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  }
-
-  
-  function carregarCarrinho() {
-    const carrinho = JSON.parse(localStorage.getItem('carrinhoCulture')) || [];
-    const container = document.getElementById('lista-carrinho');
-    const elSubtotal = document.getElementById('subtotal');
-    const elTotal = document.getElementById('total-pedido');
-    let subtotal = 0;
-
-    if (carrinho.length === 0) {
-      if (container) {
-        container.innerHTML = `<p class="carrinho-vazio">Seu carrinho está vazio. <a href="inicio.html">Voltar para a loja.</a></p>`;
-      }
-      if (elSubtotal) elSubtotal.innerText = 'R$ 0,00';
-      if (elTotal) elTotal.innerText = 'R$ 0,00';
-      return;
-    }
-
-    if (container) {
-      container.innerHTML = '';
-
-      carrinho.forEach((item, index) => {
-        const precoUnitario = converterPrecoParaNumero(item.preco);
-        const totalItem = precoUnitario * item.quantidade;
-        subtotal += totalItem;
-
-        container.innerHTML += `
-          <div class="item-carrinho">
-            <img src="${item.imagem}" alt="${item.nome}" width="80">
-            <div class="item-detalhes">
-              <h4>${item.nome}</h4>
-              <span class="item-preco">${formatarMoeda(precoUnitario)}</span>
-            </div>
-            <div class="item-qtd">
-              <button onclick="alterarQtd(${index}, -1)">-</button>
-              <span>${item.quantidade}</span>
-              <button onclick="alterarQtd(${index}, 1)">+</button>
-            </div>
-            <button class="btn-remover" onclick="removerItem(${index})">🗑️</button>
-          </div>
-        `;
-      });
-    }
-
-    if (elSubtotal) elSubtotal.innerText = formatarMoeda(subtotal);
-    if (elTotal) elTotal.innerText = formatarMoeda(subtotal);
-  }
-
-  function alterarQtd(index, mudanca) {
-    let carrinho = JSON.parse(localStorage.getItem('carrinhoCulture')) || [];
-    if (!carrinho[index]) return;
-
-    carrinho[index].quantidade += mudanca;
-
-    if (carrinho[index].quantidade <= 0) {
-      carrinho.splice(index, 1);
-    }
-
-    localStorage.setItem('carrinhoCulture', JSON.stringify(carrinho));
-    carregarCarrinho();
-  }
-
-  function removerItem(index) {
-    let carrinho = JSON.parse(localStorage.getItem('carrinhoCulture')) || [];
-    carrinho.splice(index, 1);
-    localStorage.setItem('carrinhoCulture', JSON.stringify(carrinho));
-    carregarCarrinho();
-  }
-
-  function finalizarCompra() {
-    let carrinho = JSON.parse(localStorage.getItem('carrinhoCulture')) || [];
-    
-    if (carrinho.length === 0) {
-      mostrarToast('Seu carrinho está vazio!', 'aviso');
-      return;
-    }
-
-    mostrarToast('Pedido realizado com sucesso! Obrigado por comprar na Culture.coO.', 'sucesso');
-    localStorage.removeItem('carrinhoCulture');
-    carregarCarrinho();
-  }
-
-
-  document.addEventListener('DOMContentLoaded', () => {
-    carregarCarrinho();
-    verificarCarrinhoVazio();
-  });
-
-  
-</script>
-
-<script>
-
-function alternarTema() {
-    const body = document.body;
-    const themeIcon = document.getElementById('theme-icon');
-    const themeText = document.getElementById('theme-text');
-
-
-    body.classList.toggle('light-theme');
-
-
-    const isLight = body.classList.contains('light-theme');
-
- 
-    if (themeIcon && themeText) {
-        themeIcon.textContent = isLight ? '☀️' : '🌙';
-        themeText.textContent = isLight ? 'Claro' : 'Escuro';
-    }
-
-   
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme');
-    const themeIcon = document.getElementById('theme-icon');
-    const themeText = document.getElementById('theme-text');
-
-    if (savedTheme === 'light') {
-        document.body.classList.add('light-theme');
-        if (themeIcon && themeText) {
-            themeIcon.textContent = '☀️';
-            themeText.textContent = 'Claro';
-        }
-    }
-
-   
-    const btnTheme = document.getElementById('theme-toggle');
-    if (btnTheme) {
-        btnTheme.addEventListener('click', alternarTema);
-    }
-});
-
-function alternarTema() {
-    
-    document.body.classList.toggle('dark-theme');
-
-    const isDark = document.body.classList.contains('dark-theme');
-    
-   
-    const themeText = document.getElementById('theme-text');
-    const themeIcon = document.getElementById('theme-icon');
-    
-    if (themeText && themeIcon) {
-        themeText.textContent = isDark ? 'Escuro' : 'Claro';
-        themeIcon.textContent = isDark ? '🌙' : '☀️';
-    }
-
-    
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-theme');
-        
-        const themeText = document.getElementById('theme-text');
-        const themeIcon = document.getElementById('theme-icon');
-        if (themeText && themeIcon) {
-            themeText.textContent = 'Escuro';
-            themeIcon.textContent = '🌙';
-        }
-    }
-});
-
-function alternarTema() {
-    document.body.classList.toggle('dark-theme');
-    const isDark = document.body.classList.contains('dark-theme');
-    
-    const themeText = document.getElementById('theme-text');
-    const themeIcon = document.getElementById('theme-icon');
-    
-    if (themeText && themeIcon) {
-        themeText.textContent = isDark ? 'Escuro' : 'Claro';
-        themeIcon.textContent = isDark ? '🌙' : '☀️';
-    }
-
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-theme');
-        const themeText = document.getElementById('theme-text');
-        const themeIcon = document.getElementById('theme-icon');
-        if (themeText && themeIcon) {
-            themeText.textContent = 'Escuro';
-            themeIcon.textContent = '🌙';
-        }
-    }
-});
-</script>
+<script src="carrinho.js"></script>
 
 </body>
 </html>
