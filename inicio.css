@@ -10,7 +10,7 @@
     --cor-texto-header: #ffffff;
     --cor-texto-secundario: #8e9aaf;
 
- 
+  
     --cor-destaque: #2563eb;
     --cor-destaque-hover: #1d4ed8;
     --cor-destaque-brilho: #3b82f6;
@@ -97,16 +97,15 @@ h1 {
 }
 
 .menu-container {
-    max-width: 1240px;
+    max-width: 100%; 
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 32px;
-    padding: 16px 24px;
+    padding: 16px 24px; 
     min-height: 76px;
 }
-
 .logo {
     font-size: 1.6rem;
     font-weight: 900;
@@ -146,6 +145,7 @@ h1 {
     align-items: center;
     gap: 16px;
     margin-left: auto;
+    margin-right: -12px; 
 }
 
 .icon-btn {
@@ -987,15 +987,38 @@ body.theme-light .rodape {
     border-top: 1px solid #e2e8f0 !important;
 }
 
+
 body.theme-light .news-input input {
     background-color: #f1f5f9 !important;
     color: #0f172a !important;
     border: 1px solid #cbd5e1 !important;
 }
 
-
 body.theme-light .news-input button {
     background-color: #2563eb !important;
     color: #ffffff !important;
 }
 
+.login-btn {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 50%;
+    transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.login-btn:hover {
+    color: #2563eb !important;
+    transform: translateY(-2px);
+}
+
+
+body.theme-light .login-btn {
+    color: #1e293b !important;
+}
+
+body.theme-light .login-btn:hover {
+    color: #2563eb !important;
+}
