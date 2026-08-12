@@ -147,3 +147,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+function verificarUsuarioLogado() {
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioZikka'));
+    const btnLogin = document.querySelector('.login-btn');
+
+    if (usuarioLogado && btnLogin) {
+       
+        btnLogin.innerHTML = `👤 <span style="font-size: 0.8rem; font-weight: bold; margin-left: 2px;">✓</span>`;
+        btnLogin.title = `Conectado como ${usuarioLogado.nome || 'Usuário'}`;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    verificarUsuarioLogado();
+});
